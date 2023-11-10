@@ -3,16 +3,16 @@
 public interface IUnitOfWork : IDisposable, IAsyncDisposable
 {
     //Start the database Transaction
-    void CreateTransaction();
+    Task CreateTransactionAsync();
 
     //Commit the database Transaction
-    void Commit();
+    Task CommitAsync();
 
     //Rollback the database Transaction
-    void Rollback();
+    Task RollbackAsync();
 
     //DbContext Class SaveChanges method
-    void Save();
+    Task<int> SaveAsync();
 
     IRepository<T, Key> Repository<T, Key>() where T : class where Key : class;
 }
